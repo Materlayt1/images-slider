@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/4194961283.js" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            
+        }
+
+        .left-arrow {
+            position: absolute;
+            top: 50%;
+            left: 1%;
+        }
+
+        .right-arrow {
+            position: absolute;
+            top: 50%;
+            right: 1%;
+        }
+       
+        .img{
+             opacity: 0;
+             position: absolute;
+             z-index: -1;
+              transition: 0.5s ease-in;
+        }
+        img{
+            width: 100vw;
+           
+           
+
+        }
+        i{
+            color: white;
+           
+            padding: 20px;
+            
+        }
+        i:hover{
+    opacity: 0.6;
+            
+        }
+        i:active{
+            background-color: rgba(0,0,0,0.2);
+        }
+        .active{
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slider">
+            <div class="left-arrow"><i class="fa-solid fa-arrow-left fa-xl" ></i></i></div>
+            <div class="right-arrow"><i class="fa-solid fa-arrow-right fa-xl"></i></div>
+            <div class="images">
+                <div class="img active"><img
+                        src="https://i.pinimg.com/originals/0d/c6/df/0dc6dfa8c255f46a2e85e28d84e0c90c.jpg"
+                        alt=""></div>
+                <div class="img "><img src="https://i.pinimg.com/originals/95/6a/55/956a55e67f140aa6080beb4941a799af.jpg"
+                        alt=""></div>
+                <div class="img"><img
+                        src="https://www.zastavki.com/pictures/originals/2015/Auto___Lamborghini_Sports_Lamborghini_Reventon_094976_.jpg"
+                        alt=""></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+const image = document.querySelector(".images");
+const leftArrow = document.querySelector(".left-arrow");
+const rightArrow = document.querySelector(".right-arrow");
+
+
+
+
+let n = 0;
+
+
+rightArrow.addEventListener("click",function(){
+    n ++; 
+ if (n < image.children.length) {
+    
+    image.children[n].classList.add("active");
+    image.children[n-1].classList.remove("active");
+    
+ };
+if (n > image.children.length-1){
+    n = 0;
+    image.children[0].classList.add("active");
+    image.children[image.children.length-1].classList.remove("active");
+};
+ 
+});
+
+leftArrow.addEventListener("click",function(){
+  
+    n--;
+  
+  if (n >= 0 && n < image.children.length) {
+    
+     image.children[n].classList.add("active");
+    image.children[n+1].classList.remove("active");
+     
+ };
+
+ if  (n <0 ){
+
+    n = image.children.length-1;
+    image.children[image.children.length-1].classList.add("active");
+    image.children[0].classList.remove("active");
+    
+    };
+
+ 
+
+});
+
+
+
+
+
+
+</script>
+</html>
